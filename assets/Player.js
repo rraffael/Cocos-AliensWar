@@ -27,7 +27,8 @@ cc.Class({
         //         this._bar = value;
         //     }
         // },
-        _acceleration: 0,
+        _acceleration: false,
+        _direcao: cc.v2,
     },
 
     // LIFE-CYCLE CALLBACKS:
@@ -35,19 +36,27 @@ cc.Class({
     onLoad : function () {
         cc.systemEvent.on(cc.SystemEvent.EventType.KEY_DOWN, this.teclaPressionada, this)
         cc.systemEvent.on(cc.SystemEvent.EventType.KEY_UP, this.teclaSolta, this)
+
+        let canvas = cc.find("Canvas");
+        canvas.on("mousemove", this.mudarDirecao, this);
     },
 
     teclaPressionada : function (event) {
         if(event.keyCode == cc.macro.KEY.d){
-            this._acceleration = 1
-        }
-        if(event.keyCode == cc.macro.KEY.a){
-            this._acceleration = -1
+            this._acceleration = true
         }
     },
 
     teclaSolta : function (event) {
-        this._acceleration = 0
+        this._acceleration = false
+    },
+
+    mudarDirecao : function (event) {
+        let posicaoMouse = event.getLocation();
+        posicaoMouse = new cc.v2(posicaoMouse.x, posicaoMouse.y);
+        
+        let direcao = posicaoMouse.sub(this.node.position);
+        this._direcao = direcao.normalize();
     },
 
     start () {
@@ -55,8 +64,8 @@ cc.Class({
     },
 
     update (dt) {
-        if(this._acceleration != 0){
-            this.node.x += this._acceleration;
+        if(this._acceleration){
+            this.node.position = this.node.position.add(this._direcao);
         }
            
     },
