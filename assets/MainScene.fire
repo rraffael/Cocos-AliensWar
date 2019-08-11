@@ -20,7 +20,7 @@
         "__id__": 6
       },
       {
-        "__id__": 8
+        "__id__": 9
       }
     ],
     "_active": true,
@@ -59,7 +59,8 @@
     },
     "_is3DNode": true,
     "groupIndex": 0,
-    "_id": "20kh6pSXJMp7G9oo0e80wx"
+    "autoReleaseAssets": false,
+    "_id": "b78798e1-7c54-4213-af4f-bfb259ffeb96"
   },
   {
     "__type__": "cc.Node",
@@ -246,6 +247,9 @@
     "_components": [
       {
         "__id__": 7
+      },
+      {
+        "__id__": 8
       }
     ],
     "_prefab": null,
@@ -324,6 +328,27 @@
     "_id": "a1P0UOOFRDToHV3ydNtNGg"
   },
   {
+    "__type__": "cc.BoxCollider",
+    "_name": "",
+    "_objFlags": 0,
+    "node": {
+      "__id__": 6
+    },
+    "_enabled": true,
+    "tag": 0,
+    "_offset": {
+      "__type__": "cc.Vec2",
+      "x": -6,
+      "y": 3
+    },
+    "_size": {
+      "__type__": "cc.Size",
+      "width": 106,
+      "height": 106
+    },
+    "_id": "04frLu8UpA57QPJJ2eTS5P"
+  },
+  {
     "__type__": "cc.Node",
     "_name": "hero",
     "_objFlags": 0,
@@ -335,10 +360,10 @@
     "_level": 1,
     "_components": [
       {
-        "__id__": 9
+        "__id__": 10
       },
       {
-        "__id__": 10
+        "__id__": 11
       }
     ],
     "_prefab": null,
@@ -389,7 +414,7 @@
     "_name": "",
     "_objFlags": 0,
     "node": {
-      "__id__": 8
+      "__id__": 9
     },
     "_enabled": true,
     "_materials": [
@@ -421,11 +446,15 @@
     "_name": "",
     "_objFlags": 0,
     "node": {
-      "__id__": 8
+      "__id__": 9
     },
     "_enabled": true,
     "_acceleration": 0,
     "_direcao": null,
+    "tiroPrefab": {
+      "__uuid__": "f580c0a7-248d-47ae-89a4-e607c23aaf9f"
+    },
+    "velocidade": 200,
     "_id": "37J1cLnchPsaM2zy8vS+Vo"
   }
 ]

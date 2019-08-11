@@ -29,16 +29,21 @@ cc.Class({
         // },
         _acceleration: false,
         _direcao: cc.v2,
+        tiroPrefab: cc.Prefab,
+        velocidade: 200,
     },
 
     // LIFE-CYCLE CALLBACKS:
 
     onLoad : function () {
+        cc.director.getCollisionManager().enabled = true;
+
         cc.systemEvent.on(cc.SystemEvent.EventType.KEY_DOWN, this.teclaPressionada, this)
         cc.systemEvent.on(cc.SystemEvent.EventType.KEY_UP, this.teclaSolta, this)
 
         let canvas = cc.find("Canvas");
         canvas.on("mousemove", this.mudarDirecao, this);
+        canvas.on("mousedown", this.atirar, this);
     },
 
     teclaPressionada : function (event) {
@@ -59,13 +64,23 @@ cc.Class({
         this._direcao = direcao.normalize();
     },
 
-    start () {
+    atirar: function (event) {
+        let tiro = cc.instantiate(this.tiroPrefab);
+        tiro.parent = this.node.parent;
+        tiro.position = this.node.position;
 
+        let componenteTiro = tiro.getComponent("Tiro");
+        componenteTiro.direcao = this._direcao;
+    },
+
+    start () {
+        
     },
 
     update (dt) {
         if(this._acceleration){
-            this.node.position = this.node.position.add(this._direcao);
+            let deslocamento = this._direcao.mul(this.velocidade * dt)
+            this.node.position = this.node.position.add(deslocamento);
         }
            
     },
