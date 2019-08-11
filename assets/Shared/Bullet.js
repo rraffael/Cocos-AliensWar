@@ -27,18 +27,23 @@ cc.Class({
         //         this._bar = value;
         //     }
         // },
-        direcao: cc.v2(0,0),
-        velocidade: 10,
+        direction: cc.v2(0,0),
+        speed: 600,
     },
 
     // LIFE-CYCLE CALLBACKS:
 
     // onLoad () {},
 
-    onCollisionEnter: function(outro, eu){
-        console.log("colidiu");
-        outro.node.destroy();
-        eu.node.destroy();
+    onCollisionEnter: function(other, me){
+        let character = other.getComponent("Character");
+        if(character != null){
+            character.damaged(2);
+            console.log(character.health)
+        }
+        else
+            other.node.destroy();
+        me.node.destroy();
     },
 
     start () {
@@ -47,9 +52,7 @@ cc.Class({
 
     update (dt) 
     {
-        console.log(dt)
-        let deslocamento = this.direcao.mul(this.velocidade * dt);
-        console.log(deslocamento)
-        this.node.position = this.node.position.add(deslocamento);
+        let displacement = this.direction.mul(this.speed * dt);
+        this.node.position = this.node.position.add(displacement);
     },
 });
