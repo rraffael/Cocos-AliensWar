@@ -30,12 +30,13 @@ cc.Class({
         enemyPrefab: cc.Prefab,
         area: 200,
         timer: 2,
+        timerCooldown: 3,
     },
 
     // LIFE-CYCLE CALLBACKS:
 
     onLoad () {
-        this.schedule(this.generate, this.timer)
+        this.scheduleOnce(this.initializeGeneration, this.timerCooldown);
     },
 
     generate : function(){
@@ -48,6 +49,10 @@ cc.Class({
         position = this.node.position.add(position);
 
         enemy.position = position;
+    },
+
+    initializeGeneration : function(){
+        this.schedule(this.generate, this.timer)
     },
 
     start () {

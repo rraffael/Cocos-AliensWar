@@ -53,8 +53,8 @@
     },
     "_position": {
       "__type__": "cc.Vec3",
-      "x": 573,
-      "y": 226,
+      "x": 568,
+      "y": 333,
       "z": 0
     },
     "_scale": {
@@ -139,7 +139,11 @@
     "bulletPrefab": {
       "__uuid__": "f580c0a7-248d-47ae-89a4-e607c23aaf9f"
     },
-    "_direction": null,
+    "_direction": {
+      "__type__": "cc.Vec2",
+      "x": 0,
+      "y": 0
+    },
     "_target": null,
     "speed": 50,
     "cooldown": 1,

@@ -18,6 +18,18 @@ let Character =  cc.Class({
 
                     damaged: function(){},
 
+                    calcDirection: function(mousePosition){
+                        let direction = mousePosition.sub(this.node.position);
+                        direction = direction.normalize();
+                        return direction
+                    },
+
+                    calcRotation: function(direction){
+                        let angulo = Math.atan2(direction.y, direction.x);
+                        angulo = angulo * (180/Math.PI);
+                        return angulo;
+                    },
+
                     onLoad: function () {},
 
                 });
