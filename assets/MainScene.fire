@@ -380,12 +380,6 @@
     "bulletPrefab": {
       "__uuid__": "f580c0a7-248d-47ae-89a4-e607c23aaf9f"
     },
-    "_direction": {
-      "__type__": "cc.Vec2",
-      "x": 0,
-      "y": 0
-    },
-    "_acceleration": false,
     "speed": 200,
     "maxHealth": 100,
     "_health": 0,
@@ -395,6 +389,16 @@
     "score": 0,
     "label": {
       "__id__": 15
+    },
+    "_aim": {
+      "__type__": "cc.Vec2",
+      "x": 0,
+      "y": 0
+    },
+    "_direction": {
+      "__type__": "cc.Vec2",
+      "x": 0,
+      "y": 0
     },
     "_id": "b3tPy5985BRZxB+ps6OV3G"
   },
